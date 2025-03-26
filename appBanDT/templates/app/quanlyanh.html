@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Ảnh Khách Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Quản Lý Ảnh Khách Hàng</h2>
+        
+        <!-- Form tải lên ảnh mới -->
+        <form method="POST" enctype="multipart/form-data" class="mb-3" style="margin-left: 460px; width: 30%;">
+            {% csrf_token %}
+            <div class="input-group" >
+                <input type="file" name="anhkhachhang" class="form-control" id="HinhAnhKhachHang" accept="image/*" onchange="previewImage(event)" required>
+                <button type="submit" class="btn btn-primary">Tải lên</button>
+            </div>
+            <!-- Ảnh xem trước -->
+            <img id="preview" src="" alt="Ảnh khách hàng" class="mt-2" style=" display: none; width: 50%;">
+        </form>
+        
+        <!-- Danh sách ảnh -->
+        <div class="row">
+            {% for anh in anhs %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <img src="{{ anh.LinkAnhKhachHang.url }}" class="card-img-top" alt="Ảnh khách hàng">
+                    <div class="card-body text-center">
+                        <p class="card-text">Ảnh {{ anh.MaAnhKhachHang }}</p>
+                        <form method="POST" id="delete-form-{{ anh.MaAnhKhachHang }}" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="xoa_anh" value="{{ anh.MaAnhKhachHang }}">
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ anh.MaAnhKhachHang }}')">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var preview = document.getElementById("preview");
+    
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block"; // Hiển thị ảnh
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function confirmDelete(maAnh) {
+            Swal.fire({
+                title: "Bạn có chắc chắn?",
+                text: "Ảnh này sẽ bị xóa vĩnh viễn!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Có, xóa nó!",
+                cancelButtonText: "Hủy"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("delete-form-" + maAnh).submit();
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Quản Lý Sản Phẩm</h2>
+    
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalThemSanPham">Thêm Sản Phẩm</button>
+        </div>
+    
+        <!-- Bộ lọc sản phẩm -->
+        <div class="d-flex justify-content-start mb-3">
+            <button class="btn btn-success me-2" onclick="filterProducts('Đang bán')">Đang bán</button>
+            <button class="btn btn-danger" onclick="filterProducts('Ngưng bán')">Ngưng bán</button>
+        </div>
+    
+        <!-- Bảng hiển thị sản phẩm -->
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Danh Mục</th>
+                    <th>Dòng Sản Phẩm</th>
+                    <th>Số Lượng Kho</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody id="sanpham-table">
+                {% for sp in sanphams %}
+                <tr data-trangthai="{{ sp.TrangThai }}">
+                    <td>{{ sp.MaSanPham }}</td>
+                    <td>{{ sp.TenSanPham }}</td>
+                    <td>{{ sp.MaDanhMuc.TenDanhMuc }}</td>
+                    <td>{{ sp.DongSanPham.TenDongSanPham }}</td>
+                    <td>{{ sp.SoLuongKho }}</td>
+                    <td>{{ sp.TrangThai }}</td>
+                    <td>
+                        <a href="{% url 'chi_tiet_sanpham' sp.MaSanPham %}" class="btn btn-info btn-sm">Chi Tiết</a>
+                        <button class="btn btn-warning btn-sm" 
+                            onclick="editProduct(
+                                {{ sp.MaSanPham }}, 
+                                '{{ sp.TenSanPham }}', 
+                                '{{ sp.MaDanhMuc.MaDanhMuc }}', 
+                                '{{ sp.DongSanPham.MaDongSanPham }}', 
+                                '{{ sp.SoLuongKho }}', 
+                                '{{ sp.giasanpham_set.first.GiaSanPham|default:"0" }}', 
+                                '{{ sp.giasanpham_set.first.MaMauSac.MaMauSac|default:"" }}', 
+                                '{{ sp.giasanpham_set.first.MaDungLuong.MaDungLuong|default:"" }}', 
+                                '{{ sp.MoTa }}', 
+                                '{{ sp.hinhanhsanpham_set.first.LinkAnhSanPham.url|default:"" }}' 
+                            )">
+                            Sửa
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="capNhatTrangThai({{ sp.MaSanPham }}, this)">
+                            {% if sp.TrangThai == 'Đang bán' %}Ngưng bán{% else %}Bán lại{% endif %}
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal Thêm Sản Phẩm -->
+    <!-- Modal Thêm / Sửa Sản Phẩm -->
+<div class="modal fade" id="modalThemSanPham" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Thêm Sản Phẩm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                
+                <form id="productForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="MaSanPham" id="MaSanPham"> 
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Tên Sản Phẩm</label>
+                            <input type="text" class="form-control" name="TenSanPham" id="TenSanPham" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Danh Mục</label>
+                            <select class="form-control" name="MaDanhMuc" id="MaDanhMuc" required>
+                                {% for dm in danhmucs %}
+                                    <option value="{{ dm.MaDanhMuc }}">{{ dm.TenDanhMuc }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Dòng Sản Phẩm</label>
+                            <select class="form-control" name="MaDongSanPham" id="MaDongSanPham" required>
+                                {% for dsp in dongsanphams %}
+                                    <option value="{{ dsp.MaDongSanPham }}">{{ dsp.TenDongSanPham }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Số Lượng Kho</label>
+                            <input type="number" class="form-control" name="SoLuongKho" id="SoLuongKho" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">   
+                        <div class="col-md-6">
+                            <label class="form-label">Màu Sắc</label>
+                            <select class="form-control" name="MaMauSac" id="MaMauSac">
+                                {% for ms in mausacs %}
+                                    <option value="{{ ms.MaMauSac }}">{{ ms.TenMauSac }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                     
+                        <div class="col-md-6">
+                            <label class="form-label">Dung Lượng</label>
+                            <select class="form-control" name="MaDungLuong" id="MaDungLuong">
+                                {% for dl in dungluongs %}
+                                    <option value="{{ dl.MaDungLuong }}">{{ dl.DungLuong }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Giá</label>
+                            <input type="number" class="form-control" name="GiaSanPham" id="GiaSanPham" min="0" required>
+                        </div>
+                       
+                        <div class="col-md-6">
+                            <label class="form-label">Mô Tả</label>
+                            <textarea class="form-control" name="MoTa" id="MoTa" rows="3"></textarea>
+                        </div>
+                        
+                    </div>
+                    <div class="row mt-3">
+                        
+                        <div class="col-md-6">
+                            <label class="form-label">Hình Ảnh</label>
+                            <input type="file" class="form-control" name="HinhAnhSanPham" id="HinhAnhSanPham" accept="image/*" onchange="previewImage(event)">
+                            <img id="preview" src="" alt="Ảnh sản phẩm" class="mt-2" style="max-width: 100px; display: none;">
+                        </div>
+                        
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">Thêm</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function editProduct(id, tenSanPham, maDanhMuc, maDongSanPham, soLuongKho, giaSanPham, maMauSac, maDungLuong, moTa, linkAnh) {
+        // Điền dữ liệu vào form
+        document.getElementById("MaSanPham").value = id;
+        document.getElementById("TenSanPham").value = tenSanPham;
+        document.getElementById("MaDanhMuc").value = maDanhMuc;
+        document.getElementById("MaDongSanPham").value = maDongSanPham;
+        document.getElementById("SoLuongKho").value = soLuongKho;       
+        document.getElementById("GiaSanPham").value = giaSanPham;
+        document.getElementById("MaMauSac").value = maMauSac;
+        document.getElementById("MaDungLuong").value = maDungLuong;
+        document.getElementById("MoTa").value = moTa;
+    
+        // Đổi tiêu đề modal
+        document.getElementById("modalLabel").innerText = "Cập Nhật Sản Phẩm";
+    
+        // Đổi nút từ "Thêm" thành "Cập Nhật"
+        document.getElementById("btnSubmit").innerText = "Cập Nhật";
+    
+        // Đổi action form thành cập nhật sản phẩm
+        document.getElementById("productForm").action = "/quanlysp/";
+    
+        // Hiển thị ảnh sản phẩm
+        let preview = document.getElementById("preview");
+        if (linkAnh) {
+            preview.src = linkAnh;
+            preview.style.display = "block";
+        } else {
+            preview.style.display = "none";
+        }
+    
+        // Mở modal
+        var modal = new bootstrap.Modal(document.getElementById('modalThemSanPham'));
+        modal.show();
+    }
+    
+    // Reset modal khi đóng để tránh giữ lại dữ liệu cũ
+    document.getElementById("modalThemSanPham").addEventListener("hidden.bs.modal", function () {
+        document.getElementById("modalLabel").innerText = "Thêm Sản Phẩm";
+        document.getElementById("btnSubmit").innerText = "Thêm";
+        
+        // Đặt lại action để thêm mới
+        document.getElementById("productForm").action = "/quanlysp/";
+    
+        // Xóa giá trị MaSanPham (để không bị nhầm là sửa)
+        document.getElementById("MaSanPham").value = "";
+    
+        // Reset form
+        document.getElementById("productForm").reset();
+        document.getElementById("preview").style.display = "none";
+    });
+    
+    // Hiển thị ảnh xem trước khi chọn ảnh mới
+    function previewImage(event) {
+        let preview = document.getElementById("preview");
+        let file = event.target.files[0];
+    
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = "none";
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        filterProducts('Đang bán'); // Mặc định hiển thị sản phẩm đang bán
+    });
+    
+    function filterProducts(status) {
+        let rows = document.querySelectorAll("#sanpham-table tr");
+        rows.forEach(row => {
+            let trangThai = row.getAttribute("data-trangthai");
+            if (trangThai === status) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+    function capNhatTrangThai(masp, btn) {
+        let trangThaiHienTai = btn.innerText.trim();
+        let message = trangThaiHienTai === "Ngưng bán" 
+            ? "Bạn có chắc chắn muốn ngừng bán sản phẩm này không?" 
+            : "Bạn có chắc chắn muốn bán lại sản phẩm này không?";
+    
+        Swal.fire({
+            title: "Xác nhận",
+            text: message,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Đồng ý",
+            cancelButtonText: "Hủy",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/sanpham/cap-nhat-trang-thai/${masp}/`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": getCSRFToken(),
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        Swal.fire({
+                            title: "Thành công!",
+                            text: "Trạng thái sản phẩm đã được cập nhật.",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        }).then(() => {
+                            window.location.reload(); // Reload lại trang sau khi bấm OK
+                        });
+                    } else {
+                        Swal.fire("Lỗi!", "Cập nhật trạng thái không thành công.", "error");
+                    }
+                })
+                .catch(error => {
+                    console.error("Lỗi:", error);
+                    Swal.fire("Lỗi!", "Có lỗi xảy ra khi cập nhật trạng thái.", "error");
+                });
+            }
+        });
+    }
+    
+    
+    function getCSRFToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]').value;
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

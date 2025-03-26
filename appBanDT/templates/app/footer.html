@@ -1,0 +1,167 @@
+
+{% load static %}
+<meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng</title>
+    <meta name="title" content="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" />
+    <meta name="keywords" content="iphone-se, iphone-11, iphone-pro, iphone-pro-max, iphone-xs, iphone-xs-max, iPhone-x, iphone-8, iphone-8-plus, iphone-7-plus, iphone-7, iphone6s-plus, iphone-6s, iphone-6-plus, iphone-6, " />
+    <meta name="description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+    <link rel="shortcut icon" href="{% static 'assets/uploads/images/l1hPbgK7o3z3_favicon.png' %}" type="image/x-icon" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{% static 'assets/uploads/images/2G28b85HNcgQ_iphone-xs-max-bac-4-org.jpg' %}" />
+    <meta property="og:description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/css/style.v5.9fd1a.css' %}?v=a141" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/owl.carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/fancybox/jquery.fancybox.css' %}" />
+    <script type="text/javascript" src="{% static 'assets/js/js.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/fancybox/jquery.fancybox.pack.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/customfd1a.js' %}?v=a141"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = '../www.googletagmanager.com/gtm5445.html?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-WJFJ7WGP')
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109891545-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-109891545-1')
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = '2.0'
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+      })(window, document, 'script', '../connect.facebook.net/en_US/fbevents.js')
+      fbq('init', '1438839943092779') // Insert your pixel ID here.
+      fbq('track', 'PageView')
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1438839943092779&amp;ev=PageView&amp;noscript=1" />
+    </noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+    <meta name="facebook-domain-verification" content="jnv4vzg6s3041byxpo91q8lmd92qct" />
+  </head>
+<div class="mt-4 mt-md-5">
+    <section id="showroomSection">
+        <div class="wrapper">
+            <div class="showroomSliderSection innerFloat">
+                <div id="showroomSliderSection" class="owl-carousel">
+                    {% for anh in anhkhachhang %}
+                    <a href="{{ anh.LinkAnhKhachHang.url }}" class="item showroomItem" rel="showroom">
+                      <img class="owl-lazy" data-src="{{ anh.LinkAnhKhachHang.url }}" alt="Ảnh khách hàng" />
+                  </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+  <!-- MAP -->
+  <div class="mapSection mt-4">
+    <div class="wrapper">
+      <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.9008188988226!2d106.66242812653479!3d10.76502732671123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f600eb161f9%3A0x2d331eebf5ad155a!2zSG_DoG5nIFBow7pjIFN0b3Jl!5e0!3m2!1sen!2s!4v1528969276122" width="100%" height="250px" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <section class="wrapper innerFloat">
+      <div class="row">
+        <div class="col-md-3">
+          <h3 class="heading text-uppercase default">Thông tin cửa hàng</h3>
+          <div>
+            <ul>
+              <li class="nav">
+                <h4><a href="tra-gop.html">Hướng dẫn mua hàng trả góp</a></h4>
+              </li>
+              <li class="nav">
+                <h4><a href="tin/chinh-sach-mua-hang-tu-xa.html">Hướng dẫn mua hàng từ xa</a></h4>
+              </li>
+              <li class="nav">
+                <h4><a href="tin/chinh-sach-bao-hanh-doi-tra.html">Chính sách bảo hành - Đổi trả</a></h4>
+              </li>
+              <li class="nav">
+                <h4><a href="tin/gioi-thieu-hoang-phuc-store.html">Giới thiệu Hoàng Phúc Store</a></h4>
+              </li>
+              <li class="nav">
+                <h4><a href="tin/phan-anh-khieu-nai-gop-y.html">Phản ánh khiếu nại - Góp ý</a></h4>
+              </li>
+              <li class="nav">
+                <h4><a href="tin/chinh-sach-bao-mat-thong-tin-khach-hang.html">Chính sách bảo mật thông tin</a></h4>
+              </li>
+              <li class="nav">
+                <img class="xtLazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="https://hoangphucstore.com/assets/images/logo-bo-cong-thuong.png" alt="Đã đăng ký Bộ Công Thương" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="heading text-uppercase default">Tổng đài chăm sóc khách hàng<br /><a href="tel:0931692639">0931.692.639</a> - <a href="tel:0932726693">0932.726.693</a></h3>
+          <div>
+            <ul>
+              <li class="nav">
+                <h4>Phản hồi chất lượng dịch vụ: <a href="tel:0906712639">0906.712.639</a></h4>
+              </li>
+              <li class="nav">
+                <h4>Tất cả các showroom: Từ 09h00 - 21h00 (7/7)</h4>
+              </li>
+              <li class="nav fs-16 blue2">
+                <h4>691 Đường 3/2, Phường 6, Quận 10, HCM</h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="socialSection" class="col-md-5">
+          <div class="d-flex justify-content-end">
+            <div id="fb-root"></div>
+            <div class="fb-page" data-href="https://www.facebook.com/hoangphucstorecom" data-width="615" data-height="300" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+              <blockquote cite="https://www.facebook.com/hoangphucstorecom" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/hoangphucstorecom" target="_blank">Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng</a>
+              </blockquote>
+            </div>
+            <a href="https://www.facebook.com/hoangphucstorecom" target="_blank" class="overlay d-block position-absolute w-100 h-100"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>

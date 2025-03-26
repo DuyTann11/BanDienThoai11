@@ -1,0 +1,668 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng</title>
+    <meta name="title" content="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" />
+    <meta name="keywords" content="iphone-se, iphone-11, iphone-pro, iphone-pro-max, iphone-xs, iphone-xs-max, iPhone-x, iphone-8, iphone-8-plus, iphone-7-plus, iphone-7, iphone6s-plus, iphone-6s, iphone-6-plus, iphone-6, " />
+    <meta name="description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+    <link rel="shortcut icon" href="{% static 'assets/uploads/images/l1hPbgK7o3z3_favicon.png' %}" type="image/x-icon" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{% static 'assets/uploads/images/2G28b85HNcgQ_iphone-xs-max-bac-4-org.jpg' %}" />
+    <meta property="og:description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/css/style.v5.9fd1a.css' %}?v=a141" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/owl.carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/fancybox/jquery.fancybox.css' %}" />
+    <script type="text/javascript" src="{% static 'assets/js/js.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/fancybox/jquery.fancybox.pack.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/customfd1a.js' %}?v=a141"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = '../www.googletagmanager.com/gtm5445.html?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-WJFJ7WGP')
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109891545-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-109891545-1')
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = '2.0'
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+      })(window, document, 'script', '../connect.facebook.net/en_US/fbevents.js')
+      fbq('init', '1438839943092779') // Insert your pixel ID here.
+      fbq('track', 'PageView')
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1438839943092779&amp;ev=PageView&amp;noscript=1" />
+    </noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+    <meta name="facebook-domain-verification" content="jnv4vzg6s3041byxpo91q8lmd92qct" />
+  </head>
+<header id="header">
+    <!-- TOPMOST MESSAGE -->
+    <section class="d-sm-block d-lg-none topmost white pt-2 pb-2 pl-3 pr-3">
+      <a href="javascript:;">
+        <span class="dotWaving mt-1 mr-4 ib"><span class="dot"><span class="ping"></span></span></span>
+        <b>Hoang Phuc Store:</b> Đặt Online - Giao hàng tận nơi
+      </a>
+    </section>
+
+    <!-- FORM & MENUS -->
+    <section class="wrapper d-flex">
+      <div class="bgWrapper innerFloat">
+        <div class="flexGroup d-flex">
+          <!-- LOGO -->
+          <a href="{% url 'trangchu' %}" class="logo"><img src="{% static 'assets/images/logo.png' %}" alt="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" /></a>
+          <!-- SEARCH FORM -->
+          <form action="{% url 'timsanpham' %}" method="get" id="searchBox" class="searchBox">
+            <div class="d-flex">
+                <input name="keyword" id="searchInput" class="txtKeyword disAppr" type="text" placeholder="Bạn tìm gì..." autocomplete="off" spellcheck="false" />
+                <button class="btnSubmit disAppr pr-2" type="submit" title="Tìm kiếm"><i class="fa fa-search silver"></i></button>
+            </div>
+            <div class="timkiem">
+                
+                <div class="hienthi">
+                    <!-- Kết quả tìm kiếm sẽ hiển thị ở đây -->
+                </div>
+            </div>
+        </form>
+          <!-- LOGO MOBILE -->
+          <a href="index.html" class="logoMobile ib position-relative text-center">
+            <img src="{% static 'assets/images/logo_mobile.png' %}" alt="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" />
+            <span class="lbl text-truncate position-absolute white">Trang chủ</span>
+          </a>
+        </div>
+
+        <!-- MOBILE -->
+        <div class="bgOverlay"></div>
+        <a class="menuToggle ib text-center" href="javascript:void(0)"><i class="menu spriteMobileIcons ib"></i></a>
+
+        <div class="mobileNav">
+          <div id="dropdownMenu" class="padding mt-2">
+            <div class="card">
+              <div class="card-header has-sub">
+                <a class="dropdownToggle card-link d-block" href="san-pham/dien-thoai.html"><i class="ml-2 mobile spriteMobileIcons">  
+                </i> <span class="lbl ml-3 pl-1 font-weight-bold text-uppercase">Điện thoại</span></a>
+                <a data-toggle="collapse" href="#dropdownMenu1" class="menu-toggle"></a>
+              </div>
+              <div id="dropdownMenu1" class="collapse" data-parent="#dropdownMenu">
+                <div class="card-body py-2 px-2">
+                  <ul class="d-flex flex-wrap flex-column hScroll">
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-16-series.html">iPhone 16 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-77" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-77" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-16-pro-max.html">iPhone 16 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-16-pro.html">iPhone 16 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-16-plus.html">iPhone 16 Plus</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-16.html">iPhone 16</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-15-series.html">iPhone 15 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-58" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-58" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-15-pro-max.html">iPhone 15 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-15-pro.html">iPhone 15 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-15-plus.html">iPhone 15 Plus</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-15.html">iPhone 15</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-14-series.html">iPhone 14 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-59" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-59" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-14-pro-max.html">iPhone 14 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-14-pro.html">iPhone 14 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-14-plus.html">iPhone 14 Plus</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-14.html">iPhone 14</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-13-series.html">iPhone 13 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-60" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-60" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-13-pro-max.html">iPhone 13 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-13-pro.html">iPhone 13 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-13-mini.html">iPhone 13 Mini</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-13.html">iPhone 13</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-12-series.html">iPhone 12 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-61" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-61" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-12-pro-max.html">iPhone 12 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-12-pro.html">iPhone 12 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-12.html">iPhone 12</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-11-series.html">iPhone 11 Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-62" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-62" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-11-pro-max.html">iPhone 11 Pro Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-11-pro.html">iPhone 11 Pro</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-11.html">iPhone 11</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-x-series.html">iPhone X Series</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-69" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-69" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-xs-xs-max.html">iPhone XS | XS Max</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-x-xr.html">iPhone X | XR</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-sub">
+                      <a href="san-pham/iphone-7-8.html">iPhone 7 | 8</a>
+                      <span data-toggle="collapse" href="#dropdownSubMenu-70" class="menu-toggle sub"></span>
+                      <ul id="dropdownSubMenu-70" class="pl-3 mb-2 sub-menu d-flex flex-column hScroll collapse" data-parent="#dropdownMenu1">
+                        <li>
+                          <a href="san-pham/iphone-8-8-plus.html">iPhone 8 | 8 Plus</a>
+                        </li>
+                        <li>
+                          <a href="san-pham/iphone-7-7-plus.html">iPhone 7 | 7 Plus</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header has-sub">
+                <a class="dropdownToggle card-link d-block" href="san-pham/tablet.html"><i class="tablet spriteMobileIcons"></i> <span class="lbl ml-2 font-weight-bold text-uppercase">Tablet</span></a>
+                <a data-toggle="collapse" href="#dropdownMenu2" class="menu-toggle"></a>
+              </div>
+              <div id="dropdownMenu2" class="collapse" data-parent="#dropdownMenu">
+                <div class="card-body py-2 px-2">
+                  <ul class="d-flex flex-wrap flex-column">
+                    <li class="">
+                      <a href="san-pham/ipad-air-3-4.html">iPad Air 3 | 4</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/ipad-gen-7-8.html">iPad Gen 7 | 8</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/ipad-pro-2018.html">iPad Pro 2018</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/ipad-pro-2020.html">iPad Pro 2020</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header has-sub">
+                <a class="dropdownToggle card-link d-block" href="san-pham/macbook.html"><i class="ml-0 mr-1 laptop spriteMobileIcons spriteMobileIcons2"></i> <span class="lbl ml-2 font-weight-bold text-uppercase">MacBook</span></a>
+                <a data-toggle="collapse" href="#dropdownMenu3" class="menu-toggle"></a>
+              </div>
+              <div id="dropdownMenu3" class="collapse" data-parent="#dropdownMenu">
+                <div class="card-body py-2 px-2">
+                  <ul class="d-flex flex-wrap flex-column">
+                    <li class="">
+                      <a href="san-pham/macbook-air-13-inch-2020.html">MacBook Air 13 inch 2020</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/macbook-pro-13-inch-2020.html">MacBook Pro 13 inch 2020</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header has-sub">
+                <a class="dropdownToggle card-link d-block" href="san-pham/apple-watch.html"><i class="ml-2 watch spriteMobileIcons spriteMobileIcons2"></i> <span class="lbl ml-4 font-weight-bold text-uppercase">Apple Watch</span></a>
+                <a data-toggle="collapse" href="#dropdownMenu4" class="menu-toggle"></a>
+              </div>
+              <div id="dropdownMenu4" class="collapse" data-parent="#dropdownMenu">
+                <div class="card-body py-2 px-2">
+                  <ul class="d-flex flex-wrap flex-column">
+                    <li class="">
+                      <a href="san-pham/apple-watch-se.html">Apple Watch SE</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/apple-watch-series-6.html">Apple Watch Series 6</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/apple-watch-series-5.html">Apple Watch Series 5</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/apple-watch-series-4.html">Apple Watch Series 4</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/apple-watch-series-3.html">Apple Watch Series 3</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header has-sub">
+                <a class="dropdownToggle card-link d-block" href="san-pham/phu-kien.html"><i class="others spriteMobileIcons"></i> <span class="lbl ml-2 font-weight-bold text-uppercase">Phụ kiện</span></a>
+                <a data-toggle="collapse" href="#dropdownMenu5" class="menu-toggle"></a>
+              </div>
+              <div id="dropdownMenu5" class="collapse" data-parent="#dropdownMenu">
+                <div class="card-body py-2 px-2">
+                  <ul class="d-flex flex-wrap flex-column">
+                    <li class="">
+                      <a href="san-pham/sac-cap-tai-nghe-iphone.html">Sạc Cáp Tai Nghe iPhone</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/airpods-pro.html">Airpods | Pro</a>
+                    </li>
+                    <li class="">
+                      <a href="san-pham/phu-kien-khac.html">Phụ kiện khác</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="card-link d-block" href="tra-gop.html"><i class="installment spriteMobileIcons2 d-inline-block"></i> <span class="ml-2 lbl font-weight-bold text-uppercase">Mua Trả góp</span></a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="card-link d-block" href="tin/muc/tin-cong-nghe.html"><i class="news spriteMobileIcons2 d-inline-block"></i> <span class="ml-2 lbl font-weight-bold text-uppercase">Tin Công nghệ</span></a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="card-link d-block" href="trang/lien-he-cua-hang.html"><i class="contact spriteMobileIcons2 d-inline-block"></i> <span class="ml-2 lbl font-weight-bold text-uppercase">Liên hệ</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="padding py-1">
+            <span>Gọi mua hàng</span> <a href="tel:0931692639" class="callNow blue"><strong><i class="fa fa-phone"></i> 0931692639</strong></a>
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+      
+      <div class="navItemSection innerFloat">         
+        <span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Điện thoại">
+          <i class="spriteIcons mobile"></i>
+          <span class="lbl">Điện thoại</span>
+          <ul class="sub text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+            <li>
+              <a href="http://127.0.0.1:8000/" onclick="showAllProducts()">
+                Tất cả sản phẩm
+            </a>
+          </li>
+            {% for dong in dongsanphams %}
+            {% if dong.DanhMuc.TenDanhMuc == "Điện thoại" %}
+                <li class="has-sub">
+                    <a href="javascript:void(0);" onclick="redirectToHomeAndShowProducts('{{ dong.TenDongSanPham }}')">
+                        {{ dong.TenDongSanPham }} 
+                    </a>
+                    <ul class="sub sub-level-2 text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+                        {% for sanpham in sanphams %}
+                            {% if sanpham.DongSanPham.TenDongSanPham == dong.TenDongSanPham %}
+                                <li class="product-item {{ dong.TenDongSanPham|slugify }}">
+                                  <a href="/sanpham/{{ sanpham.MaSanPham }}">
+                                        {{ sanpham.TenSanPham }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+      </span>
+      
+        <span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Tablet">
+        <i class="spriteIcons mobile"></i>
+        <span class="lbl">Tablet</span>
+        <ul class="sub text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+          <li>
+              <a href="http://127.0.0.1:8000/" onclick="showAllProducts()">
+                  Tất cả sản phẩm
+              </a>
+          </li>
+          {% for dong in dongsanphams %}
+          {% if dong.DanhMuc.TenDanhMuc == "Tablet" %}
+              <li class="has-sub">
+                  <a href="javascript:void(0);" onclick="redirectToHomeAndShowProducts('{{ dong.TenDongSanPham }}')">
+                      {{ dong.TenDongSanPham }} 
+                  </a>
+                  <ul class="sub sub-level-2 text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+                      {% for sanpham in sanphams %}
+                          {% if sanpham.DongSanPham.TenDongSanPham == dong.TenDongSanPham %}
+                              <li class="product-item {{ dong.TenDongSanPham|slugify }}">
+                                <a href="/sanpham/{{ sanpham.MaSanPham }}">
+                                  {{ sanpham.TenSanPham }}
+                              </a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </li>
+          {% endif %}
+      {% endfor %}
+      </ul>
+    </span>
+    <span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Macbook">
+      <i class="spriteIcons mobile"></i>
+      <span class="lbl">Macbook</span>
+      <ul class="sub text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+        <li>
+            <a href="http://127.0.0.1:8000/" onclick="showAllProducts()">
+                Tất cả sản phẩm
+            </a>
+        </li>
+        {% for dong in dongsanphams %}
+        {% if dong.DanhMuc.TenDanhMuc == "Macbook" %}
+            <li class="has-sub">
+                <a href="javascript:void(0);" onclick="redirectToHomeAndShowProducts('{{ dong.TenDongSanPham }}')">
+                    {{ dong.TenDongSanPham }} 
+                </a>
+                <ul class="sub sub-level-2 text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+                    {% for sanpham in sanphams %}
+                        {% if sanpham.DongSanPham.TenDongSanPham == dong.TenDongSanPham %}
+                            <li class="product-item {{ dong.TenDongSanPham|slugify }}">
+                              <a href="/sanpham/{{ sanpham.MaSanPham }}">
+                                {{ sanpham.TenSanPham }}
+                            </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+  </span>
+  <span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Apple Watch">
+    <i class="spriteIcons mobile"></i>
+    <span class="lbl">Apple Watch</span>
+    <ul class="sub text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+      <li>
+          <a href="http://127.0.0.1:8000/" onclick="showAllProducts()">
+              Tất cả sản phẩm
+          </a>
+      </li>
+      {% for dong in dongsanphams %}
+      {% if dong.DanhMuc.TenDanhMuc == "Apple Watch" %}
+          <li class="has-sub">
+              <a href="javascript:void(0);" onclick="redirectToHomeAndShowProducts('{{ dong.TenDongSanPham }}')">
+                  {{ dong.TenDongSanPham }} 
+              </a>
+              <ul class="sub sub-level-2 text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+                  {% for sanpham in sanphams %}
+                      {% if sanpham.DongSanPham.TenDongSanPham == dong.TenDongSanPham %}
+                          <li class="product-item {{ dong.TenDongSanPham|slugify }}">
+                            <a href="/sanpham/{{ sanpham.MaSanPham }}">
+                              {{ sanpham.TenSanPham }}
+                          </a>
+                          </li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+          </li>
+      {% endif %}
+  {% endfor %}
+  </ul>
+</span>
+<span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Phụ kiện">
+  <i class="spriteIcons mobile"></i>
+  <span class="lbl">Phụ kiện</span>
+  <ul class="sub text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+    <li>
+        <a href="http://127.0.0.1:8000/" onclick="showAllProducts()">
+            Tất cả sản phẩm
+        </a>
+    </li>
+    {% for dong in dongsanphams %}
+    {% if dong.DanhMuc.TenDanhMuc == "Phụ kiện" %}
+        <li class="has-sub">
+            <a href="javascript:void(0);" onclick="redirectToHomeAndShowProducts('{{ dong.TenDongSanPham }}')">
+                {{ dong.TenDongSanPham }} 
+            </a>
+            <ul class="sub sub-level-2 text-nowrap text-left font-weight-normal text-normal d-flex flex-wrap flex-column">
+                {% for sanpham in sanphams %}
+                    {% if sanpham.DongSanPham.TenDongSanPham == dong.TenDongSanPham %}
+                        <li class="product-item {{ dong.TenDongSanPham|slugify }}">
+                          <a href="/sanpham/{{ sanpham.MaSanPham }}">
+                            {{ sanpham.TenSanPham }}
+                        </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+</span>
+        
+        <a href="{% url 'lienhe' %}" class="navItem text-center text-uppercase">
+          <i class="spriteIcons contact"></i>
+          <span class="lbl">Liên hệ</span>
+        </a>
+      </div>
+    </section>
+  </header>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    let searchTimeout;
+    let ajaxRequest;
+    let lastResults = {}; // Lưu kết quả theo từng từ khóa
+
+    $("#searchInput").on("input", function () {
+        clearTimeout(searchTimeout);
+        let keyword = $(this).val().trim();
+        let resultsContainer = $(".hienthi"); // Đổi sang hiển thị kết quả trong .hienthi
+        let loading = $(".loading");
+
+        if (keyword.length === 0) {
+            resultsContainer.html(""); // Xóa kết quả khi không có input
+            return;
+        }
+
+        // Nếu đã tìm trước đó thì lấy kết quả từ cache
+        if (lastResults[keyword]) {
+            resultsContainer.html(lastResults[keyword]);
+            return;
+        }
+
+        loading.removeClass("d-none"); // Hiển thị loading
+
+        searchTimeout = setTimeout(function () {
+            if (ajaxRequest) {
+                ajaxRequest.abort(); // Hủy request trước đó
+            }
+
+            ajaxRequest = $.ajax({
+                url: "{% url 'timsanpham' %}",
+                data: { keyword: keyword },
+                dataType: "json",
+                success: function (data) {
+                    console.log("Dữ liệu trả về:", data); // Kiểm tra dữ liệu từ API
+                    loading.addClass("d-none"); // Ẩn loading
+
+                    if (data.sanphams.length > 0) {
+                      // Chỉ lấy 6 sản phẩm đầu tiên
+                      let results = data.sanphams.slice(0, 6).map(sp => `
+                            <div class="search-item d-flex align-items-center" onclick="window.location.href='/sanpham/${sp.id}/'">
+                                <img src="${sp.hinh_anh}" alt="${sp.ten}" class="search-img">
+                                <span class="search-name">${sp.ten}</span>
+                            </div>
+                        `).join("");
+
+                        lastResults[keyword] = results; // Lưu vào cache
+                        resultsContainer.html(results);
+                    } else {
+                        resultsContainer.html("<p class='text-muted'>Không tìm thấy sản phẩm</p>");
+                    }
+                },
+                error: function (xhr, status) {
+                    if (status !== "abort") {
+                        loading.addClass("d-none");
+                    }
+                }
+            });
+        }, 300);
+    });
+
+
+
+    $(document).on("click", function (e) {
+      if (!$(e.target).closest(".timkiem, .hienthi").length) {
+          $(".hienthi").hide(); // Ẩn phần hiển thị kết quả tìm kiếm khi click ra ngoài
+      }
+  });
+  
+  // Hiển thị lại kết quả khi nhập vào ô tìm kiếm
+  $("#searchInput").on("focus", function () {
+      $(".hienthi").show();
+  });
+});
+
+</script>
+
+<!-- CSS cho kết quả tìm kiếm -->
+<style>
+.quickSearchSection {
+    position: absolute;
+    background: white;
+    width: 100%;
+    border: 1px solid #ddd;
+    display: none;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.search-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+.search-item:hover {
+    background: #f1f1f1;
+}
+.search-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.search-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+.hienthi {
+  position: absolute; /* Giữ vị trí tuyệt đối để hiển thị trên slider */
+  top: 136%; /* Đẩy xuống dưới ô tìm kiếm */
+  left: 0;
+  width: 160%;
+  background: white; /* Màu nền để nhìn rõ hơn */
+  border: 1px solid #ddd;
+  z-index: 9999; /* Đảm bảo hiển thị trên mọi phần khác */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+.hienthi .search-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.hienthi .search-item:nth-child(n+7) { /* Ẩn các kết quả thứ 7 trở đi */
+  display: none;
+}
+
+</style>

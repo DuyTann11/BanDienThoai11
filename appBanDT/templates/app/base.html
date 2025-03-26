@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng</title>
+    <meta name="title" content="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" />
+    <meta name="keywords" content="iphone-se, iphone-11, iphone-pro, iphone-pro-max, iphone-xs, iphone-xs-max, iPhone-x, iphone-8, iphone-8-plus, iphone-7-plus, iphone-7, iphone6s-plus, iphone-6s, iphone-6-plus, iphone-6, " />
+    <meta name="description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+    <link rel="shortcut icon" href="{% static 'assets/uploads/images/l1hPbgK7o3z3_favicon.png' %}" type="image/x-icon" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{% static 'assets/uploads/images/2G28b85HNcgQ_iphone-xs-max-bac-4-org.jpg' %}" />
+    <meta property="og:description" content="Chuyên iPhone - iPad - Macbook &amp; Phụ Kiện" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/css/style.v5.9fd1a.css' %}?v=a141" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/owl.carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/vendors/fancybox/jquery.fancybox.css' %}" />
+    <script type="text/javascript" src="{% static 'assets/js/js.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vendors/fancybox/jquery.fancybox.pack.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/customfd1a.js' %}?v=a141"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = '../www.googletagmanager.com/gtm5445.html?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-WJFJ7WGP')
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109891545-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-109891545-1')
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = '2.0'
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+      })(window, document, 'script', '../connect.facebook.net/en_US/fbevents.js')
+      fbq('init', '1438839943092779') // Insert your pixel ID here.
+      fbq('track', 'PageView')
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1438839943092779&amp;ev=PageView&amp;noscript=1" />
+    </noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+    <meta name="facebook-domain-verification" content="jnv4vzg6s3041byxpo91q8lmd92qct" />
+  </head>
+</head>
+<body>
+
+    {% include 'app/header.html' %}  
+    
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Lấy thông tin từ URL hoặc LocalStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        let selectedCategory = urlParams.get("category"); // Lấy category từ URL
+        let selectedDong = localStorage.getItem("selectedDongSanPham"); // Lấy dòng sản phẩm từ LocalStorage
+    
+        console.log("Danh mục từ URL:", selectedCategory);
+        console.log("Dòng sản phẩm từ LocalStorage:", selectedDong);
+    
+        if (selectedDong) {
+            showProducts(selectedDong);
+            localStorage.removeItem("selectedDongSanPham"); // Xóa sau khi sử dụng
+        } else if (selectedCategory) {
+            filterProductsByCategory(selectedCategory);
+        }
+    });
+    
+    // Hàm hiển thị sản phẩm theo dòng sản phẩm
+    function showProducts(dongName) {
+      console.log("Lọc theo dòng sản phẩm:", dongName);
+  
+      // Ẩn tất cả tiêu đề danh mục
+      let allCategories = document.querySelectorAll('.sectionHeading');
+      allCategories.forEach(category => category.style.display = 'none');
+  
+      // Ẩn tất cả danh sách sản phẩm
+      let allProductLists = document.querySelectorAll('.productWrapper');
+      allProductLists.forEach(productWrapper => productWrapper.style.display = 'none');
+  
+      // Chuẩn hóa tên dòng sản phẩm để khớp với class CSS
+      let normalizedDongName = removeVietnameseTones(dongName).toLowerCase().replace(/\s+/g, '-');
+  
+      // Hiển thị dòng sản phẩm được chọn
+      let selectedCategory = document.querySelector('.sectionHeading[data-category="' + dongName + '"]');
+      if (selectedCategory) {
+          selectedCategory.style.display = 'block';
+      }
+  
+      // Hiển thị sản phẩm thuộc dòng đã chọn
+      let selectedProducts = document.querySelectorAll('.' + normalizedDongName + '-products');
+      selectedProducts.forEach(selectedProduct => {
+          selectedProduct.style.display = 'block';
+      });
+  }
+  
+  // Hàm loại bỏ dấu tiếng Việt
+  function removeVietnameseTones(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Loại bỏ dấu
+                .replace(/đ/g, "d").replace(/Đ/g, "D") // Thay thế đ -> d, Đ -> D
+                .replace(/[^a-zA-Z0-9\s-]/g, "") // Loại bỏ ký tự đặc biệt
+                .trim(); // Loại bỏ khoảng trắng thừa
+  }
+    
+    // Hàm hiển thị sản phẩm theo danh mục
+    function filterProductsByCategory(selectedCategory) {
+        console.log("Lọc theo danh mục:", selectedCategory);
+    
+        let allHeadings = document.querySelectorAll(".sectionHeading"); // Lấy tất cả tiêu đề danh mục
+        let allProductLists = document.querySelectorAll(".productWrapper"); // Lấy tất cả danh sách sản phẩm
+        let allProducts = document.querySelectorAll(".productItem"); // Lấy tất cả sản phẩm
+    
+        allHeadings.forEach(heading => heading.style.display = "none"); // Ẩn tiêu đề danh mục
+        allProductLists.forEach(list => list.style.display = "none"); // Ẩn danh sách sản phẩm
+    
+        allProducts.forEach(product => {
+          let productCategory = product.getAttribute("data-category");
+  
+          if (productCategory === selectedCategory) {
+              product.style.display = "block"; // Hiện sản phẩm
+              let parentList = product.closest(".productWrapper"); 
+              if (parentList) {
+                  parentList.style.display = "block"; // Hiện danh sách sản phẩm
+                  let heading = parentList.previousElementSibling; 
+                  if (heading) {
+                      heading.style.display = "block"; // Hiện tiêu đề
+                  }
+                  hasVisibleProduct = true; // Đánh dấu có sản phẩm hiển thị
+              }
+          } else {
+              product.style.display = "none"; // Ẩn sản phẩm khác danh mục
+          }
+      });
+    }
+    
+    
+    // Hàm chuyển hướng khi chọn dòng sản phẩm
+    function redirectToHomeAndShowProducts(dongName) {
+        localStorage.setItem("selectedDongSanPham", dongName); // Lưu dòng sản phẩm vào LocalStorage
+        window.location.href = "http://127.0.0.1:8000/"; // Chuyển hướng về trang chủ
+    }
+    
+    // Hàm chuyển hướng khi chọn danh mục sản phẩm
+    function filterProducts(element) {
+        let selectedCategory = element.getAttribute("data-category"); // Lấy danh mục được chọn
+        console.log("Chuyển hướng đến trang với danh mục:", selectedCategory);
+      
+        // Chuyển hướng đến trang chính với tham số danh mục
+        window.location.href = `http://127.0.0.1:8000/?category=${encodeURIComponent(selectedCategory)}`;
+    }
+ 
+    
+      </script>
+</body>
+</html>
