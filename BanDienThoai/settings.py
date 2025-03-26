@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-cgw7r^h7xth1f*_%wu)e3da5$-^=-9@re+v(6))jg$6q(ihbg_
 DEBUG = True
 # xem debug trên môi trường thử nghiệm, khi vận hành thực tế chuyển là flase
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bandienthoai11.onrender.com', 'localhost', '127.0.0.1']
 
 #'*' để chạy host khi deloy test
 # chổ này sẽ nhập ip để có thể liên kết được với web mình viết
