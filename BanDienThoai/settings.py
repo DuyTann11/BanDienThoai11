@@ -83,10 +83,16 @@ WSGI_APPLICATION = 'BanDienThoai.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sqlbandienthoai',
+        'USER': 'sqlbandienthoai_user',
+        'PASSWORD': 'aPFUmh13HYA0NJZhV9Uxy2cXahuJEymE',
+        'HOST': 'dpg-cvhlto1opnds73fl1vcg-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
 
 
