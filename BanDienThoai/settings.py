@@ -144,15 +144,27 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Thư mục chứa các tệp tĩnh trong dự án (chỉ dùng khi chạy local)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'appBanDT', 'static'),  
-]
+# STATICFILES_DIRS chỉ dùng khi chạy local
+if not os.getenv('RENDER'):  
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'appBanDT', 'static'),  
+    ]
 
-# Kiểm tra nếu đang chạy trên Render (hoặc môi trường sản xuất)
+# Kiểm tra nếu đang chạy trên Render
 if os.getenv('RENDER'):
-    DEBUG = False  # Đảm bảo tắt DEBUG khi deploy
+    DEBUG = False  # Tắt DEBUG khi deploy
+    ALLOWED_HOSTS = ['bandienthoai11.onrender.com']
+
+    # Kích hoạt WhiteNoise để phục vụ static files
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',  # Thêm dòng này
+        ...
+    ]
+
+    # Đảm bảo WhiteNoise nén file tĩnh
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'appBanDT/static/assets/uploads/images')
