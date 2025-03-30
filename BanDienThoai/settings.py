@@ -144,13 +144,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-if os.getenv('RENDER'):
-    DEBUG = False  # Đảm bảo tắt DEBUG khi deploy
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Thư mục chứa static sau khi collect
-    STATICFILES_DIRS = []  # Xóa STATICFILES_DIRS để tránh xung đột
-else:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'appBanDT', 'static'),  
-    ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+
+# Chỉ dùng khi chạy local, bỏ khi deploy
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'appBanDT', 'static'),  # Thư mục chứa file static
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'appBanDT/static/assets/uploads/images')
