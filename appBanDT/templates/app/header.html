@@ -76,7 +76,7 @@
     <!-- End Facebook Pixel Code -->
     <meta name="facebook-domain-verification" content="jnv4vzg6s3041byxpo91q8lmd92qct" />
   </head>
-<header id="header">
+<header id="header" style="background-color: #FFA500;" >
     <!-- TOPMOST MESSAGE -->
     <section class="d-sm-block d-lg-none topmost white pt-2 pb-2 pl-3 pr-3">
       <a href="javascript:;">
@@ -90,7 +90,9 @@
       <div class="bgWrapper innerFloat">
         <div class="flexGroup d-flex">
           <!-- LOGO -->
-          <a href="{% url 'trangchu' %}" class="logo"><img src="{% static 'assets/images/logo.png' %}" alt="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" /></a>
+          <a href="{% url 'trangchu' %}" class="logo">
+            <img src="{% static 'assets/images/camphone.png' %}" alt="Hoàng Phúc Store - Điện thoại iPhone, iPad, Macbook, Phụ kiện chính hãng" width="213" height="28" />
+        </a>
           <!-- SEARCH FORM -->
           <form action="{% url 'timsanpham' %}" method="get" id="searchBox" class="searchBox">
             <div class="d-flex">
@@ -369,7 +371,7 @@
         <!-- END -->
       </div>
       
-      <div class="navItemSection innerFloat">         
+      <div class="navItemSection innerFloat" >       
         <span class="navItem pointer text-center text-uppercase" onclick="filterProducts(this)" data-category="Điện thoại">
           <i class="spriteIcons mobile"></i>
           <span class="lbl">Điện thoại</span>
@@ -664,5 +666,11 @@
 .hienthi .search-item:nth-child(n+7) { /* Ẩn các kết quả thứ 7 trở đi */
   display: none;
 }
+body div.navItemSection.innerFloat .navItem {
+  background-color: #FFA500 !important;
+}
 
+body div.navItemSection.innerFloat .navItem:hover {
+  background-color: #FFB347 !important;
+}
 </style>
